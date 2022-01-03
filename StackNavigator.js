@@ -14,6 +14,7 @@ import RequestScreen from './screens/RequestScreen';
 import SamsungScreen from './screens/SamsungScreen';
 import ScheduleService from './screens/ScheduleService';
 import TecnoScreen from './screens/TecnoScreen';
+import ThankyouScreen from './screens/ThankyouScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ const StackNavigator = () => {
                 <Stack.Screen name="OtherPhones" component={OtherPhonesScreen}/>
                 <Stack.Screen name="Confirm" component={ConfirmRequest}/>
                 <Stack.Screen name="Schedule" component={ScheduleService}/>
+                <Stack.Screen name="Thanks" component={ThankyouScreen}/>
                 </>
             ): (
                 <Stack.Screen name="Login" component={LoginScreen}/>

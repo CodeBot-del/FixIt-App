@@ -2,13 +2,39 @@ import React, {Component, useEffect, useState} from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image} from 'react-native';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
-
-
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
+import useAuth from '../hooks/useAuth';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const ConfirmRequest = (props) => {
     const {navigation, route} = props
     const {title} = route.params
+    const nav = useNavigation();
+    //initializing variables to hook for in db
+    const {user} = useAuth();
+    const [phoneType, setPhoneType] = useState(title);
+    const [service, setService] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [address, setAddress] = useState(null);
+
+    const incompleteForm = !phoneType || !service || !phoneNumber || !address;
+
+    //create docs to save user requests
+    const sendRequest = () => {
+        setDoc(doc(db, 'requests', user.uid), {
+            id: user.uid,
+            phoneType: phoneType,
+            serviceFor: service,
+            phoneNumber: phoneNumber,
+            address: address,
+            timestamp: serverTimestamp()
+        }).then(() => {
+            nav.navigate('Thanks');
+        }).catch(error => {
+            alert(error.message);
+        })
+    }
 
 
     return (
@@ -20,13 +46,16 @@ const ConfirmRequest = (props) => {
                 <Text style={tw('font-bold')}>Phone Type:</Text>
                 <TextInput 
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
-                    value={title}
+                    value={phoneType}
+                    onChangeText ={setPhoneType}
                 />
             </View>
 
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Service For:</Text>
                 <TextInput 
+                    value={service}
+                    onChangeText ={setService}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
                     placeholder='what you want to repair'
                 />
@@ -35,6 +64,8 @@ const ConfirmRequest = (props) => {
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Active Phone Number:</Text>
                 <TextInput 
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
                     placeholder='your active phone number'
                     keyboardType='numeric'
@@ -44,6 +75,8 @@ const ConfirmRequest = (props) => {
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Address (where you are):</Text>
                 <TextInput 
+                    value={address}
+                    onChangeText={setAddress}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
                     placeholder='enter your location'
                 />
@@ -51,10 +84,14 @@ const ConfirmRequest = (props) => {
 
             <View style={tw('pt-5')}>
             <TouchableOpacity 
+                disabled={incompleteForm}
                 
-                
-                style={tw('items-center justify-center rounded-full w-26 h-16 bg-green-200')}>
-                    {/* <Entypo name="tools" size={24} color="green"/> */}
+                style={[tw('items-center justify-center rounded-full w-26 h-16'),
+                        incompleteForm ? tw('bg-gray-300') : tw('bg-green-400')
+                ]}
+                onPress={sendRequest}
+                >
+                    
                     <Text style={tw('text-xl font-bold text-black')}>Request</Text>
 
                 </TouchableOpacity>
@@ -67,10 +104,9 @@ const ConfirmRequest = (props) => {
 
             <View style={tw('pt-5')}>
             <TouchableOpacity 
-                
-                
-                style={tw('items-center justify-center  w-26 h-16 bg-gray-200')} onPress={() => navigation.navigate('Schedule')}>
-                    {/* <Entypo name="tools" size={24} color="green"/> */}
+                style={tw('items-center justify-center  w-26 h-16 bg-gray-400')} onPress={()=>{nav.navigate('Schedule', {
+                    title: title});}}>
+                    
                     <Text style={tw('text-xl font-bold text-black')}>Schedule Service at Your Doorstep</Text>
 
                 </TouchableOpacity>
@@ -86,4 +122,3 @@ const ConfirmRequest = (props) => {
 
 export default ConfirmRequest
 
-const styles = StyleSheet.create({})
