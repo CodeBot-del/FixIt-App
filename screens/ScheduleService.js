@@ -101,7 +101,7 @@ const ScheduleService = (props) => {
 
             <View style={tw('pt-5')}>
             <TouchableOpacity 
-                
+                disabled={incompleteForm}
                 
                 style={[tw('items-center justify-center rounded-full w-26 h-16 bg-green-200'),
                     incompleteForm ? tw('bg-gray-300') : tw('bg-green-400')

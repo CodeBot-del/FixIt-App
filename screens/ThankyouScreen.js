@@ -29,7 +29,7 @@ const ThankyouScreen = () => {
                     For help and any other inconvenience, 
                 </Text>
                 <Text style={tw('relative top-60')}>
-                Call: +255 658 174 914
+                Call: +255 657 538 068
                 </Text>
                 </View>
 

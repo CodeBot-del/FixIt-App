@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image} from 'react-native';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
@@ -6,28 +6,33 @@ import useAuth from '../hooks/useAuth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
-const OtherPhonesScreen = () => {
-    const navigation = useNavigation();
+
+const OthersSchedules = () => {
+    
+
+    const nav = useNavigation();
 
     const {user} = useAuth();
     const [phoneType, setPhoneType] = useState(null);
     const [service, setService] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [address, setAddress] = useState(null);
+    const [date, setDate] = useState(null);
 
-    const incompleteForm = !phoneType || !service || !phoneNumber || !address;
+    const incompleteForm = !phoneType || !service || !phoneNumber || !address || !date;
 
-    //create docs to save user requests
+    //create docs to send Schedule requests
     const sendRequest = () => {
-        setDoc(doc(db, 'requests', user.uid), {
+        setDoc(doc(db, 'schedules', user.uid), {
             id: user.uid,
             phoneType: phoneType,
             serviceFor: service,
             phoneNumber: phoneNumber,
             address: address,
+            date: date,
             timestamp: serverTimestamp()
         }).then(() => {
-            navigation.navigate('Thanks');
+            nav.navigate('Thanks');
         }).catch(error => {
             alert(error.message);
         })
@@ -42,19 +47,18 @@ const OtherPhonesScreen = () => {
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Phone Type:</Text>
                 <TextInput 
-                    value={phoneType}
-                    onChangeText ={setPhoneType}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
                     placeholder='Enter your phone type'
-                    
+                    value={phoneType}
+                    onChangeText ={setPhoneType}
                 />
             </View>
 
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Service For:</Text>
-                <TextInput
+                <TextInput 
                     value={service}
-                    onChangeText ={setService} 
+                    onChangeText ={setService}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
                     placeholder='what you want to repair'
                 />
@@ -62,7 +66,7 @@ const OtherPhonesScreen = () => {
 
             <View style={tw('p-2')}>
                 <Text style={tw('font-bold')}>Active Phone Number:</Text>
-                <TextInput 
+                <TextInput
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
                     style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
@@ -81,38 +85,38 @@ const OtherPhonesScreen = () => {
                 />
             </View>
 
+            <View style={tw('p-2')}>
+           
+                
+                <Text style={tw('font-bold')}>Date of Service:</Text>
+                <TextInput 
+                    value={date}
+                    onChangeText={setDate}
+                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    placeholder='DD-MM-YY'
+                    keyboardType='numeric'
+                />
+            </View>
+
             <View style={tw('pt-5')}>
             <TouchableOpacity 
                 disabled={incompleteForm}
                 
-                style={[tw('items-center justify-center rounded-full w-26 h-16'),
-                        incompleteForm ? tw('bg-gray-300') : tw('bg-green-400')
-                ]}
+                style={[tw('items-center justify-center rounded-full w-26 h-16 bg-green-200'),
+                    incompleteForm ? tw('bg-gray-300') : tw('bg-green-400')
+                ]} 
                 onPress={sendRequest}
                 >
-                    {/* <Entypo name="tools" size={24} color="green"/> */}
-                    <Text style={tw('text-xl font-bold text-black')}>Request</Text>
+                    
+                    <Text style={tw('text-xl font-bold text-black')}>Confirm</Text>
 
                 </TouchableOpacity>
 
             </View>
 
-            <View style={tw('items-center pt-10')}>
-                <Text style={tw('text-xl font-bold text-black')}>OR</Text>
-            </View>
+            
 
-            <View style={tw('pt-5')}>
-            <TouchableOpacity 
-                
-                
-                style={tw('items-center justify-center  w-26 h-16 bg-gray-400')} onPress={() => navigation.navigate('OtherSchedules')}>
-                    {/* <Entypo name="tools" size={24} color="green"/> */}
-                    <Text style={tw('text-xl font-bold text-black')}>Schedule Service at Your Doorstep</Text>
-
-                </TouchableOpacity>
-
-            </View>
-
+            
             
 
             
@@ -120,6 +124,6 @@ const OtherPhonesScreen = () => {
     )
 }
 
-export default OtherPhonesScreen
+export default OthersSchedules
 
 const styles = StyleSheet.create({})

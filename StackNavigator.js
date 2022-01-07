@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen';
 import NokiaScreen from './screens/NokiaScreen';
 import OppoScreen from './screens/OppoScreen';
 import OtherPhonesScreen from './screens/OtherPhonesScreen';
+import OthersSchedules from './screens/OthersSchedules';
 import RequestScreen from './screens/RequestScreen';
 import SamsungScreen from './screens/SamsungScreen';
 import ScheduleService from './screens/ScheduleService';
@@ -41,6 +42,7 @@ const StackNavigator = () => {
                 <Stack.Screen name="Confirm" component={ConfirmRequest}/>
                 <Stack.Screen name="Schedule" component={ScheduleService}/>
                 <Stack.Screen name="Thanks" component={ThankyouScreen}/>
+                <Stack.Screen name="OtherSchedules" component={OthersSchedules}/>
                 </>
             ): (
                 <Stack.Screen name="Login" component={LoginScreen}/>

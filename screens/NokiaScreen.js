@@ -181,6 +181,6 @@ const styles = StyleSheet.create({
     scrollView: {
         backgroundColor: 'whitesmoke',
         marginHorizontal: 20,
-        height: 600,
+        height: 650,
         },
 })
