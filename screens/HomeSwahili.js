@@ -12,91 +12,91 @@ import Swiper from "react-native-deck-swiper";
 
 const SERVICES = [
     {
-        firstName: "Screen",
-        lastName: "Repair",
-        desc: "Cracked screen repair",
+        firstName: "Kioo",
+        lastName: "",
+        desc: "Kioo Kilicho Vunjika",
         photoURL:"https://images.pexels.com/photos/8833423/pexels-photo-8833423.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        state: "available",
+        state: "Inapatikana",
         id: 1,
     },
     {
-        firstName: "Battery",
-        lastName: "Repair",
-        desc: "Dead Battery repair",
+        firstName: "Betri",
+        lastName: "",
+        desc: "Betri Iliyo Haribika",
         photoURL:"https://images.unsplash.com/photo-1536692192939-f1547f1cde39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1520&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 2,
     },
     {
-        firstName: "Front",
-        lastName: "Camera",
-        desc: "Selfie camera repair",
+        firstName: "Kamera",
+        lastName: "Mbele",
+        desc: "Kamera Ya Mbele",
         photoURL:"https://images.unsplash.com/photo-1608186336271-53313eeaf864?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 3,
     },
     {
-        firstName: "MIC",
-        lastName: "Repair",
-        desc: "Phone's MIC repair",
+        firstName: "Mikrofoni",
+        lastName: "",
+        desc: "Maiki Iliyo Haribika",
         photoURL:"https://static.vecteezy.com/system/resources/previews/000/421/801/original/microphone-icon-vector-illustration.jpg",
-        state: "available",
+        state: "Inapatikana",
         id: 4,
     },
     {
-        firstName: "Reciever",
-        lastName: "Repair",
-        desc: "Phone's Reciever repair",
+        firstName: "Kipokezi",
+        lastName: "",
+        desc: "Kipokezi Simu",
         photoURL:"https://www.airtighttestingstaffordshire.co.uk/wp-content/uploads/2019/09/call-icon.jpg",
-        state: "available",
+        state: "Inapatikana",
         id: 5,
     },
     {
-        firstName: "Charging Jack",
-        lastName: "Repair",
-        desc: "Phone's Charging Jack repair",
+        firstName: "Chaja",
+        lastName: "",
+        desc: "Chaja Iliyo Haribika",
         photoURL:"https://images.unsplash.com/photo-1521369853169-98555e5e5f4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 6,
     },
     {
-        firstName: "Speaker",
-        lastName: "Repair",
-        desc: "Phone's Audio Speaker repair",
+        firstName: "Spika",
+        lastName: "",
+        desc: "Spika Iliyo Haribika",
         photoURL:"https://images.unsplash.com/photo-1608538770329-65941f62f9f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1420&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 7,
     },
     {
-        firstName: "Back Panel",
-        lastName: "Repair",
-        desc: "Phone's Back Panel repair",
+        firstName: "Housing ya Simu",
+        lastName: "",
+        desc: "Housing Iliyo Haribika",
         photoURL:"https://images.unsplash.com/photo-1603812188321-94ba55ed5652?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1556&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 8,
     },
     {
-        firstName: "Proximity",
-        lastName: "Repair",
-        desc: "Phone's Proximity repair",
+        firstName: "Sensa",
+        lastName: "",
+        desc: "Sensa Zilizo Haribika",
         photoURL:"https://images.unsplash.com/photo-1590459963567-1bf6b8595be1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 9,
     },
     {
-        firstName: "Rear",
-        lastName: "Camera",
+        firstName: "Kamera",
+        lastName: "Nyuma",
         desc: "Back camera repair",
         photoURL:"https://images.unsplash.com/photo-1608186336271-53313eeaf864?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
         state: "available",
         id: 10,
     },
     {
-        firstName: "Phone",
-        lastName: "Checkup",
-        desc: "Full phone checkup",
+        firstName: "Kagua",
+        lastName: "Simu",
+        desc: "Tatizo Lisilo Julikana",
         photoURL:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
-        state: "available",
+        state: "Inapatikana",
         id: 11,
     },
 ]
@@ -133,8 +133,8 @@ const HomeScreen = () => {
 
             {/* End of Header */}
             <View style={tw('items-center ')}>
-                <Text style={tw('text-xl font-bold')}>Available services</Text>
-                <Text style={tw('')}>8:00 AM  To  5:00 PM</Text>
+                <Text style={tw('text-xl font-bold')}>Huduma Zilizopo</Text>
+                <Text style={tw('')}>8:00 AM  -  5:00 PM</Text>
             </View>
             
             {/* cards */}
@@ -153,7 +153,7 @@ const HomeScreen = () => {
                     }}
                     onSwipedRight={() => { 
                         console.log("Swipe REQUEST")
-                        navigation.navigate('Request') //....navigate with props {cardIndex.desc}
+                        navigation.navigate('RequestSwahili') //....navigate with props {cardIndex.desc}
                         
 
                     }}

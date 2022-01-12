@@ -16,6 +16,32 @@ import SamsungScreen from './screens/SamsungScreen';
 import ScheduleService from './screens/ScheduleService';
 import TecnoScreen from './screens/TecnoScreen';
 import ThankyouScreen from './screens/ThankyouScreen';
+import Menu from './screens/Menu';
+import HomeSwahili from './screens/HomeSwahili';
+import RequestSwahili from './screens/RequestSwahili';
+import SamsungSwahili from './screens/SamsungSwahili';
+import AppleSwahili from './screens/AppleSwahili';
+import HuaweiSwahili from './screens/HuaweiSwahili';
+import TecnoSwahili from './screens/TecnoSwahili';
+import InfinixSwahili from './screens/InfinixSwahili';
+import OppoSwahili from './screens/OppoSwahili';
+import NokiaSwahili from './screens/NokiaSwahili';
+import OtherPhonesSwahili from './screens/OtherPhonesSwahili';
+import ThankyouSwahili from './screens/ThankyouSwahili';
+import OtherSchedulesSwahili from './screens/OtherSchedulesSwahili';
+import ConfirmRequestSwahili from './screens/ConfirmRequestSwahili';
+import ScheduleServiceSwahili from './screens/ScheduleServiceSwahili';
+
+
+
+
+
+
+
+
+
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +69,32 @@ const StackNavigator = () => {
                 <Stack.Screen name="Schedule" component={ScheduleService}/>
                 <Stack.Screen name="Thanks" component={ThankyouScreen}/>
                 <Stack.Screen name="OtherSchedules" component={OthersSchedules}/>
+                <Stack.Screen name="Menu" component={Menu}/>
+                <Stack.Screen name="HomeSwahili" component={HomeSwahili}/>
+                <Stack.Screen name="RequestSwahili" component={RequestSwahili}/>
+                <Stack.Screen name="SamsungSwahili" component={SamsungSwahili}/>
+                <Stack.Screen name="AppleSwahili" component={AppleSwahili}/>
+                <Stack.Screen name="HuaweiSwahili" component={HuaweiSwahili}/>
+                <Stack.Screen name="TecnoSwahili" component={TecnoSwahili}/>
+                <Stack.Screen name="InfinixSwahili" component={InfinixSwahili}/>
+                <Stack.Screen name="OppoSwahili" component={OppoSwahili}/>
+                <Stack.Screen name="NokiaSwahili" component={NokiaSwahili}/>
+                <Stack.Screen name="OtherPhonesSwahili" component={OtherPhonesSwahili}/>
+                <Stack.Screen name="ThankyouSwahili" component={ThankyouSwahili}/>
+                <Stack.Screen name="OtherSchedulesSwahili" component={OtherSchedulesSwahili}/>
+                <Stack.Screen name="ConfirmSwahili" component={ConfirmRequestSwahili}/>
+                <Stack.Screen name="ScheduleServiceSwahili" component={ScheduleServiceSwahili}/>
+
+
+
+
+
+
+
+
+
+
+                
                 </>
             ): (
                 <Stack.Screen name="Login" component={LoginScreen}/>
