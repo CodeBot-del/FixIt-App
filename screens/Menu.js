@@ -1,5 +1,6 @@
-import React, {useState, route} from 'react'
-import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity, Image, Switch,} from 'react-native';
+import React, {useState, route, useContext} from 'react'
+import { View, SafeAreaView, StyleSheet, TouchableOpacity, Image, } from 'react-native';
+import {Text, Button, TextInput, Switch,} from 'react-native-paper';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
@@ -8,9 +9,14 @@ import useAuth from "../hooks/useAuth";
 
 const RequestScreen = () => {
     const navigation = useNavigation();
-    const {user} = useAuth();
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const {user, } = useAuth();
+    const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+    const toggleSwitch = () => {
+        setIsDarkTheme(!isDarkTheme);
+    }
+
+    
+    
     
     return (
         <SafeAreaView style={tw('top-8 p-3')}>
@@ -48,10 +54,10 @@ const RequestScreen = () => {
                 
                 <Switch
                     trackColor={{ false: "#767577", true: "#1d3557" }}
-                    thumbColor={isEnabled ? "#81b0ff" : "#f4f3f4"}
+                    thumbColor={isDarkTheme ? "#81b0ff" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    value={isDarkTheme}
                     
                 />
             

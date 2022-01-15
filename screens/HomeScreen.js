@@ -1,5 +1,6 @@
 import React, {useLayoutEffect, useRef} from 'react'
-import { View, Text, Button, SafeAreaView, TouchableOpacity, Image, StyleSheet, NativeModules } from 'react-native';
+import { View, Text as SwiperText, SafeAreaView, TouchableOpacity, Image, StyleSheet, NativeModules } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import {useNavigation} from "@react-navigation/core";
 import useAuth from "../hooks/useAuth";
 import tw from 'tailwind-rn';
@@ -186,16 +187,16 @@ const HomeScreen = () => {
                             />
                             <View style={[tw('absolute bottom-0 rounded-b-xl shadow-xl flex-row bg-white w-full h-20 justify-between items-center px-6 py-2'), styles.cardShadow,]}>
                                 <View>
-                                    <Text style={tw('text-xl font-bold')}>
+                                    <SwiperText style={tw('text-xl font-bold')}>
                                         {card.firstName} {card.lastName}
-                                    </Text>
-                                    <Text>
+                                    </SwiperText>
+                                    <SwiperText>
                                         {card.desc}
-                                    </Text>
+                                    </SwiperText>
                                 </View>
-                                <Text style={tw('text-2xl font-bold')}>
+                                <SwiperText style={tw('text-2xl font-bold')}>
                                     {card.state}
-                                </Text>
+                                </SwiperText>
                             </View>
                         </View>
                         

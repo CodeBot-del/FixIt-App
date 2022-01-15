@@ -1,5 +1,6 @@
 import React, {Component, useEffect, useState} from 'react'
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet,View, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import {Text, Button, TextInput} from 'react-native-paper';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
