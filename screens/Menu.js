@@ -1,30 +1,33 @@
 import React, {useState, route, useContext} from 'react'
-import { View, SafeAreaView, StyleSheet, TouchableOpacity, Image, } from 'react-native';
-import {Text, Button, TextInput, Switch,} from 'react-native-paper';
+import { View, SafeAreaView, StyleSheet, TouchableOpacity, Image, Text, Button, TextInput, Switch,} from 'react-native';
+import {} from 'react-native-paper';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
 import useAuth from "../hooks/useAuth";
+import { EventRegister } from 'react-native-event-listeners';
+import themeContext from '../config/themeContext';
 
 
-const RequestScreen = () => {
+
+const Menu = () => {
+    const theme = useContext(themeContext);
     const navigation = useNavigation();
     const {user, } = useAuth();
-    const [isDarkTheme, setIsDarkTheme] = React.useState(false);
-    const toggleSwitch = () => {
-        setIsDarkTheme(!isDarkTheme);
-    }
+    const [mode, setMode] = useState(false);
+    
 
     
     
     
     return (
-        <SafeAreaView style={tw('top-8 p-3')}>
+        
+        <View style={[tw('top-5 p-3 h-full'), {backgroundColor: theme.background}]}>
 
-            <Text style={tw('text-2xl font-bold')}>Settings</Text>
+            <Text style={[tw('text-2xl font-bold'), {color: theme.color}]}>Settings</Text>
             
-            <View style={tw('bg-white-200 w-full h-80 justify-between ')}>
-                <TouchableOpacity style={tw('relative p-4 w-full h-80 items-center p-2')} onPress={() => navigation.navigate('Samsung')}>
+
+                <TouchableOpacity style={tw('relative p-4 w-full h-80 items-center p-2')} onPress={()=>{}}>
                 <Image 
                 style={tw('absolute top-0 h-60 w-full rounded-xl')} 
                 source={{uri: user.photoURL}}
@@ -33,7 +36,8 @@ const RequestScreen = () => {
 
                 </TouchableOpacity>
                 
-                <Text style={tw('text-xl font-semibold')}>Language</Text>
+                
+                <Text style={[tw('text-xl font-semibold'), {color: theme.color}]}>Language</Text>
 
                 <TouchableOpacity onPress={() => navigation.navigate('Home')} style={tw('p-2')}>
                 <Image 
@@ -50,36 +54,22 @@ const RequestScreen = () => {
                 />
                 </TouchableOpacity>
 
-                <Text style={tw('text-l font-semibold pt-3')}>Dark Mode</Text>
-                
-                <Switch
-                    trackColor={{ false: "#767577", true: "#1d3557" }}
-                    thumbColor={isDarkTheme ? "#81b0ff" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isDarkTheme}
-                    
+                <Text style={[tw('text-l font-semibold pt-3'), {color: theme.color}]}>Dark Mode</Text>
+                <Switch 
+                style={tw('w-20')}
+                value = {mode}
+                onValueChange={(value) => {
+                    setMode(value);
+                    EventRegister.emit("changeTheme", value);
+                }}
                 />
+                
             
                 
 
-            </View>
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-                
-                
             
 
-            
-        </SafeAreaView>
+        </View>
         
     )
 }
@@ -98,4 +88,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default RequestScreen
+export default Menu

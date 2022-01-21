@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, SafeAreaView, TouchableOpacity, Image} from 'react-native';
-import {Text, Button, TextInput} from 'react-native-paper';
+import React, { useState, useContext } from 'react';
+import { Text, Button, TextInput, StyleSheet, View, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import {} from 'react-native-paper';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
 import useAuth from '../hooks/useAuth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import themeContext from '../config/themeContext';
+
+
 
 
 const ScheduleService = (props) => {
+    const theme = useContext(themeContext);
+
     const {navigation, route} = props
     const {title} = route.params
 
@@ -41,15 +46,15 @@ const ScheduleService = (props) => {
     }
 
     return (
-        <SafeAreaView style={tw('top-8 p-2')}>
+        <SafeAreaView style={[tw('top-7 p-2 h-full'), {backgroundColor: theme.background}]}>
             <View style={tw('items-center')}>
-            <Text style={tw('text-2xl font-bold p-3')}>Request Service</Text>
+            <Text style={[tw('text-2xl font-bold p-3'), {color: theme.color}]}>Schedule Service</Text>
             </View>
 
             <View style={tw('p-2')}>
-                <Text style={tw('font-bold')}>Phone Type:</Text>
+                <Text style={[tw('font-bold'), {color: theme.color}]}>Phone Type:</Text>
                 <TextInput 
-                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    style={[{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}, {color: theme.color}]}
                     placeholder='Enter your phone type'
                     value={phoneType}
                     onChangeText ={setPhoneType}
@@ -57,32 +62,32 @@ const ScheduleService = (props) => {
             </View>
 
             <View style={tw('p-2')}>
-                <Text style={tw('font-bold')}>Service For:</Text>
+                <Text style={[tw('font-bold'), {color: theme.color}]}>Service For:</Text>
                 <TextInput 
                     value={service}
                     onChangeText ={setService}
-                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    style={[{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}, {color: theme.color}]}
                     placeholder='what you want to repair'
                 />
             </View>
 
             <View style={tw('p-2')}>
-                <Text style={tw('font-bold')}>Active Phone Number:</Text>
+                <Text style={[tw('font-bold'), {color: theme.color}]}>Active Phone Number:</Text>
                 <TextInput
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
-                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    style={[{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}, {color: theme.color}]}
                     keyboardType='numeric'
                     placeholder='enter your active phone number'
                 />
             </View>
 
             <View style={tw('p-2')}>
-                <Text style={tw('font-bold')}>Address (where you are):</Text>
+                <Text style={[tw('font-bold'), {color: theme.color}]}>Address (where you are):</Text>
                 <TextInput 
                     value={address}
                     onChangeText={setAddress}
-                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    style={[{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}, {color: theme.color}]}
                     placeholder='enter your location'
                 />
             </View>
@@ -90,11 +95,11 @@ const ScheduleService = (props) => {
             <View style={tw('p-2')}>
            
                 
-                <Text style={tw('font-bold')}>Date of Service:</Text>
+                <Text style={[tw('font-bold'), {color: theme.color}]}>Date of Service:</Text>
                 <TextInput 
                     value={date}
                     onChangeText={setDate}
-                    style={{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}}
+                    style={[{height: 30, width: 320, borderBottomWidth: 1, borderColor: 'gray', borderWidth: 1, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0}, {color: theme.color}]}
                     placeholder='DD-MM-YY'
                     keyboardType='numeric'
                 />

@@ -1,19 +1,21 @@
-import React, {useState, route} from 'react'
+import React, {useState, route, useContext} from 'react'
 import { View, SafeAreaView, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 import {Text, Button, TextInput} from 'react-native-paper';
 import tw from 'tailwind-rn';
 import {useNavigation} from "@react-navigation/core";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
+import themeContext from '../config/themeContext';
 
 
 const RequestScreen = () => {
     const navigation = useNavigation();
+    const theme = useContext(themeContext);
 
     
     return (
-        <SafeAreaView style={tw('top-8 p-3')}>
+        <SafeAreaView style={[tw('top-5 h-full p-3'), {backgroundColor: theme.background}]}>
 
-            <Text style={tw('text-2xl font-bold')}>Choose your Phone's brand</Text>
+            <Text style={[tw('text-2xl font-bold'), {color: theme.color}]}>Choose your Phone's brand</Text>
             
             <View style={tw('bg-white-200 w-full h-20 justify-between ')}>
                 <TouchableOpacity style={tw('absolute p-4 w-full h-20 items-center p-2')} onPress={() => navigation.navigate('Samsung')}>

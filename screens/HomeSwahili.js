@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useRef} from 'react'
+import React, {useLayoutEffect, useRef, useContext} from 'react'
 import { View, Text as SwiperText, SafeAreaView, TouchableOpacity, Image, StyleSheet, NativeModules } from 'react-native';
 import {Text, Button, TextInput} from 'react-native-paper';
 import {useNavigation} from "@react-navigation/core";
@@ -6,8 +6,8 @@ import useAuth from "../hooks/useAuth";
 import tw from 'tailwind-rn';
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
 import Swiper from "react-native-deck-swiper";
-//import AsyncStorage from '@react-native-async-storage/async-storage';
-// import RNRestart from 'react-native-restart';
+import themeContext from '../config/themeContext';
+
 
 
 
@@ -107,13 +107,12 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     const {user, logout} = useAuth();
     const swipeRef = useRef(null);
-    // const onButtonClick = () => {
-    //     RNRestart.Restart();
-    //   };
+    const theme = useContext(themeContext);
+
     
     
     return (
-        <SafeAreaView style={tw("top-8 flex-1")}>
+        <SafeAreaView style={[tw("top-5 flex-1"), {backgroundColor: theme.background}]}>
             {/* Header */}
                 <View style={tw("flex-row items-center justify-between px-5")}>
                     <TouchableOpacity onPress={logout}>
@@ -134,8 +133,8 @@ const HomeScreen = () => {
 
             {/* End of Header */}
             <View style={tw('items-center ')}>
-                <Text style={tw('text-xl font-bold')}>Huduma Zilizopo</Text>
-                <Text style={tw('')}>8:00 AM  -  5:00 PM</Text>
+                <Text style={[tw('text-xl font-bold'), {color: theme.color}]}>Huduma Zilizopo</Text>
+                <Text style={{color: theme.color}}>8:00 AM  -  5:00 PM</Text>
             </View>
             
             {/* cards */}
