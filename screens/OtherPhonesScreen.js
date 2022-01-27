@@ -91,7 +91,7 @@ const OtherPhonesScreen = () => {
                 disabled={incompleteForm}
                 
                 style={[tw('items-center justify-center rounded-full w-26 h-16'),
-                        incompleteForm ? tw('bg-gray-300') : tw('bg-green-400')
+                        incompleteForm ? tw('bg-gray-400') : tw('bg-green-400')
                 ]}
                 onPress={sendRequest}
                 >
