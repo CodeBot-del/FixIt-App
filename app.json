@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "FixIt",
+    "name": "Fix It",
     "slug": "FixIt",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon2.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,17 +17,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.codbots.fixit",
+      
+      "googleServicesFile": "GoogleService-Info.plist"
+      
     },
     "android": {
+      "versionCode": 3,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon2.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "host.exp.exponent"
+      "package": "com.codbots.fixit",
+      "googleServicesFile": "google-services.json"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon2.png"
     }
   }
 }

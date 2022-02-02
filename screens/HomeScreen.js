@@ -151,7 +151,7 @@ const HomeScreen = () => {
                     }}
                     onSwipedRight={() => { 
                         console.log("Swipe REQUEST")
-                        navigation.navigate('Request') //....navigate with props {cardIndex.desc}
+                        navigation.navigate('Request', {title: "Phone Checkup"}) //....navigate with props {cardIndex.desc}
                         
 
                     }}
